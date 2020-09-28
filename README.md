@@ -4,4 +4,4 @@ This repository contains the a deployer for all Trustmark Tools, including the _
 
 ## How to Use This Tool
 
-A basic tutorial for using the deployer is available at [https://github.com/Trustmark-Initiative/trustmark-tools-deploy/wiki/]. 
+A basic tutorial for using the deployer is available at [https://github.com/Trustmark-Initiative/trustmark-tools-deploy/wiki/](https://github.com/Trustmark-Initiative/trustmark-tools-deploy/wiki/). 
