@@ -1,0 +1,84 @@
+version: '2.3'
+
+services:
+  tpat:
+    build:
+      context: ./tpat
+      dockerfile: Dockerfile
+    container_name: tpat
+    restart: unless-stopped
+    depends_on:
+      - tpatDatabase
+    ports:
+      - "8009:8009"
+      - "8080:8080"
+    mem_limit: 4g
+    logging:
+      options:
+        max-size: "5m"
+        max-file: "3"
+      driver: "json-file"
+    volumes: 
+      - /opt/tpat/files
+      - /opt/tpat/lucene
+    command: ["./wait-for-it.sh", "tpatDatabase:3306","--","catalina.sh", "run"]
+
+  tat:
+    build:
+      context: ./tat
+      dockerfile: Dockerfile
+    container_name: tat
+    restart: unless-stopped
+    depends_on:
+      - tatDatabase
+      - tpat
+    ports:
+      - "8109:8009"
+      - "8081:8080"
+    mem_limit: 4g
+    logging:
+      options:
+        max-size: "15m"
+        max-file: "3"
+      driver: "json-file"
+    volumes: 
+      - /opt/tat/files
+      - /opt/tat/lucene
+    command: ["./wait-for-it.sh", "tatDatabase:3306","--","catalina.sh", "run"]
+
+
+  tpatDatabase:
+    image: mariadb:10.3
+    container_name: tpatDatabase
+    restart: unless-stopped
+    ports:
+    - "3356:3306"
+    healthcheck:
+      test: "/usr/bin/mysql --user=tpat_user \"--password=tpat_pw_11\" --execute \"SHOW DATABASES;\""
+      interval: 5s
+      timeout: 2s
+      retries: 5
+    environment:
+    - MYSQL_USER=tpat_user
+    - MYSQL_PASSWORD=tpat_pw_11
+    - MYSQL_ROOT_PASSWORD=tpat_pw_11
+    - MYSQL_DATABASE=tpat_db
+
+
+  tatDatabase:
+    image: mariadb:10.3
+    container_name: tatDatabase
+    restart: unless-stopped
+    ports:
+    - "3456:3306"
+    healthcheck:
+      test: "/usr/bin/mysql --user=tat_user \"--password=tat_pw_11\" --execute \"SHOW DATABASES;\""
+      interval: 5s
+      timeout: 2s
+      retries: 5
+    environment:
+    - MYSQL_USER=tat_user
+    - MYSQL_PASSWORD=tat_pw_11
+    - MYSQL_ROOT_PASSWORD=tat_pw_11
+    - MYSQL_DATABASE=tat_db
+
