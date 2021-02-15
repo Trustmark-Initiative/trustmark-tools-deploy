@@ -1,5 +1,5 @@
-FROM tomcat:8.5.13-jre8
-COPY ./wait-for-it.sh wait-for-it.sh
+FROM tomcat:9.0.43-jdk8
+COPY tomcat-config.xml /usr/local/tomcat/conf/server.xml
 ADD https://trustmarkinitiative.org/software/tat-1.0.rc2.war /tmp/tat.war
 RUN unzip -d /usr/local/tomcat/webapps/tat /tmp/tat.war
 COPY tat_config.properties /usr/local/tomcat/webapps/tat/WEB-INF/classes

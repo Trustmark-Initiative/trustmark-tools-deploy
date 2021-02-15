@@ -46,6 +46,30 @@ services:
       - /opt/tat/lucene
     command: ["./wait-for-it.sh", "tatDatabase:3306","--","catalina.sh", "run"]
 
+  tbr:
+    build:
+      context: ./tbr
+      dockerfile: Dockerfile
+    container_name: tbr
+    restart: unless-stopped
+    depends_on:
+      - tbrDatabase
+      - tpat
+      - tat
+    ports:
+      - "8209:8009"
+      - "8082:8080"
+    mem_limit: 4g
+    logging:
+      options:
+        max-size: "15m"
+        max-file: "3"
+      driver: "json-file"
+    volumes: 
+      - /opt/tbr/files
+      - /opt/tbr/lucene
+    command: ["./wait-for-it.sh", "tbrDatabase:3306","--","catalina.sh", "run"]
+
 
   tpatDatabase:
     image: mariadb:10.3
@@ -81,4 +105,21 @@ services:
     - MYSQL_PASSWORD=tat_pw_11
     - MYSQL_ROOT_PASSWORD=tat_pw_11
     - MYSQL_DATABASE=tat_db
+
+  tbrDatabase:
+    image: mariadb:10.3
+    container_name: tbrDatabase
+    restart: unless-stopped
+    ports:
+    - "3356:3306"
+    healthcheck:
+      test: "/usr/bin/mysql --user=tbr_user \"--password=tbr_pw_11\" --execute \"SHOW DATABASES;\""
+      interval: 5s
+      timeout: 2s
+      retries: 5
+    environment:
+    - MYSQL_USER=tbr_user
+    - MYSQL_PASSWORD=tbr_pw_11
+    - MYSQL_ROOT_PASSWORD=tbr_pw_11
+    - MYSQL_DATABASE=tbr_db
 
