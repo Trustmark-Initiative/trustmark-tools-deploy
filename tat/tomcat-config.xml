@@ -116,7 +116,7 @@
     <Connector protocol="AJP/1.3"
                address="0.0.0.0"
                port="8009"
-               requiredSecret="$'+&s6*WXcbK-\%e"
+               requiredSecret="Le7YzpvfXbD8qcsN"
                redirectPort="8443" />
 
     <!-- An Engine represents the entry point (within Catalina) that processes

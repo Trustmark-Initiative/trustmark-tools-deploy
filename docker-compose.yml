@@ -21,7 +21,6 @@ services:
     volumes: 
       - /opt/tpat/files
       - /opt/tpat/lucene
-    command: ["./wait-for-it.sh", "tpatDatabase:3306","--","catalina.sh", "run"]
 
   tat:
     build:
@@ -44,7 +43,6 @@ services:
     volumes: 
       - /opt/tat/files
       - /opt/tat/lucene
-    command: ["./wait-for-it.sh", "tatDatabase:3306","--","catalina.sh", "run"]
 
   tbr:
     build:
@@ -68,7 +66,6 @@ services:
     volumes: 
       - /opt/tbr/files
       - /opt/tbr/lucene
-    command: ["./wait-for-it.sh", "tbrDatabase:3306","--","catalina.sh", "run"]
 
 
   tpatDatabase:
