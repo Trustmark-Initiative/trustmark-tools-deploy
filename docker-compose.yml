@@ -108,7 +108,7 @@ services:
     container_name: tbrDatabase
     restart: unless-stopped
     ports:
-    - "3356:3306"
+    - "3556:3306"
     healthcheck:
       test: "/usr/bin/mysql --user=tbr_user \"--password=tbr_pw_11\" --execute \"SHOW DATABASES;\""
       interval: 5s
