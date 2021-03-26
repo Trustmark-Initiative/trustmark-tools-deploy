@@ -41,8 +41,8 @@ services:
         max-file: "3"
       driver: "json-file"
     volumes: 
-      - /opt/tat/files
-      - /opt/tat/lucene
+      - /opt/trustmarks/tat/files:/opt/tat/files
+      - /opt/trustmarks/tat/files:/opt/tat/lucene
 
   tbr:
     build:
@@ -91,7 +91,9 @@ services:
     container_name: tatDatabase
     restart: unless-stopped
     ports:
-    - "3456:3306"
+      - "3456:3306"
+    volumes:
+      - /opt/trustmarks/tat/db:/var/lib/mysql
     healthcheck:
       test: "/usr/bin/mysql --user=tat_user \"--password=tat_pw_11\" --execute \"SHOW DATABASES;\""
       interval: 5s
