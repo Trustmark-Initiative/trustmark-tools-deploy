@@ -30,7 +30,6 @@ services:
     restart: unless-stopped
     depends_on:
       - tatDatabase
-      - tpat
     ports:
       - "8109:8009"
       - "8081:8080"
@@ -41,8 +40,8 @@ services:
         max-file: "3"
       driver: "json-file"
     volumes: 
-      - /opt/trustmarks/tat/files:/opt/tat/files
-      - /opt/trustmarks/tat/files:/opt/tat/lucene
+      - /Users/jk90/Documents/src/opt/trustmarks/tat/files:/opt/tat/files
+      - /Users/jk90/Documents/src/opt/trustmarks/tat/files:/opt/tat/lucene
 
   tbr:
     build:
@@ -52,8 +51,6 @@ services:
     restart: unless-stopped
     depends_on:
       - tbrDatabase
-      - tpat
-      - tat
     ports:
       - "8209:8009"
       - "8082:8080"
@@ -93,7 +90,7 @@ services:
     ports:
       - "3456:3306"
     volumes:
-      - /opt/trustmarks/tat/db:/var/lib/mysql
+      - /Users/jk90/Documents/src/opt/trustmarks/tat/db:/var/lib/mysql
     healthcheck:
       test: "/usr/bin/mysql --user=tat_user \"--password=tat_pw_11\" --execute \"SHOW DATABASES;\""
       interval: 5s

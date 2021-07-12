@@ -1,4 +1,4 @@
-FROM tomcat:9.0.43-jdk8
+FROM tomcat:9.0.43-jdk11
 COPY tomcat-config.xml /usr/local/tomcat/conf/server.xml
 ADD https://trustmarkinitiative.org/software/tpat-1.2.war /tmp/tpat.war
 RUN unzip -d /usr/local/tomcat/webapps/tpat /tmp/tpat.war
