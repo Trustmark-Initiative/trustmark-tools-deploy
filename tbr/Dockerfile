@@ -1,6 +1,6 @@
 FROM tomcat:9.0.43-jdk11
 COPY tomcat-config.xml /usr/local/tomcat/conf/server.xml
-ADD https://trustmarkinitiative.org/software/tbr-1.0-rc3.war /tmp/tbr.war
+ADD https://trustmarkinitiative.org/software/tbr-1.0.war /tmp/tbr.war
 RUN unzip -d /usr/local/tomcat/webapps/tbr /tmp/tbr.war
 COPY tbr_config.properties /usr/local/tomcat/webapps/tbr/WEB-INF/classes
 COPY ./images/banner.png /usr/local/tomcat/webapps/tbr/assets/tmi-header-56eb1cb69ffde28907e0a78527bbd88d.png

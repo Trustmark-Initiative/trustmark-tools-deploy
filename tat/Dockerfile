@@ -1,6 +1,6 @@
 FROM tomcat:9.0.43-jdk11
 COPY tomcat-config.xml /usr/local/tomcat/conf/server.xml
-ADD https://trustmarkinitiative.org/software/tat-1.2-rc1.war /tmp/tat.war
+ADD https://trustmarkinitiative.org/software/tat-1.2.war /tmp/tat.war
 RUN unzip -d /usr/local/tomcat/webapps/tat /tmp/tat.war
 COPY tat_config.properties /usr/local/tomcat/webapps/tat/WEB-INF/classes
 COPY ./images/banner.png /usr/local/tomcat/webapps/tat/assets/tmi-header-56eb1cb69ffde28907e0a78527bbd88d.png
