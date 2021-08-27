@@ -64,6 +64,26 @@ services:
       - /opt/tbr/files
       - /opt/tbr/lucene
 
+  trpt:
+    build:
+      context: ./trpt
+      dockerfile: Dockerfile
+    container_name: trpt
+    restart: unless-stopped
+    depends_on:
+      - trptDatabase
+    ports:
+      - "8309:8009"
+      - "8083:8080"
+    mem_limit: 4g
+    logging:
+      options:
+        max-size: "15m"
+        max-file: "3"
+      driver: "json-file"
+    volumes: 
+      - /opt/trpt/files
+      - /opt/trpt/lucene
 
   tpatDatabase:
     image: mariadb:10.3
@@ -118,4 +138,21 @@ services:
     - MYSQL_PASSWORD=tbr_pw_11
     - MYSQL_ROOT_PASSWORD=tbr_pw_11
     - MYSQL_DATABASE=tbr_db
+
+  trptDatabase:
+    image: mariadb:10.3
+    container_name: trptDatabase
+    restart: unless-stopped
+    ports:
+    - "3656:3306"
+    healthcheck:
+      test: "/usr/bin/mysql --user=admin \"--password=admin11!\" --execute \"SHOW DATABASES;\""
+      interval: 5s
+      timeout: 2s
+      retries: 5
+    environment:
+    - MYSQL_USER=trpt_user
+    - MYSQL_PASSWORD=trpt_pw_11
+    - MYSQL_ROOT_PASSWORD=trpt_pw_11
+    - MYSQL_DATABASE=trpt_db
 
