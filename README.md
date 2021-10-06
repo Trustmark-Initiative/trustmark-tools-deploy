@@ -1,6 +1,6 @@
 # Trustmark Tools Deployer
 
-This repository contains the a deployer for all Trustmark Tools, including the [_Trust Policy Authoring Tool_](https://github.com/Trustmark-Initiative/tpat) and [_Trustmark Assessment Tool_](https://github.com/Trustmark-Initiative/tat).  In the future it will also include the _Trustmark Binding Registry_ and _Trustmark Relying Party Tool_. It is a basic configuration harness that you can use to set up and deploy an instance of each tool using [Docker](https://www.docker.com/).
+This repository contains the a deployer for all Trustmark Tools, including the [_Trust Policy Authoring Tool_](https://github.com/Trustmark-Initiative/tpat), [_Trustmark Assessment Tool_](https://github.com/Trustmark-Initiative/tat), [_Trustmark Binding Registry_](https://github.com/Trustmark-Initiative/tbr) and [_Trustmark Relying Party Tool_](https://github.com/Trustmark-Initiative/trpt). It is a basic configuration harness that you can use to set up and deploy an instance of each tool using [Docker](https://www.docker.com/).
 
 ## How to Use This Tool
 
