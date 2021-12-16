@@ -6,6 +6,6 @@ COPY tbr_config.properties /usr/local/tomcat/webapps/tbr/WEB-INF/classes
 COPY ./images/banner.png /usr/local/tomcat/webapps/tbr/assets/tmi-header-6a00aed2b9e1b873d00c5f0c9bbbd7d3.png
 COPY ./images/favicon.ico /usr/local/tomcat/webapps/ROOT/
 COPY ./images/favicon.ico /usr/local/tomcat/webapps/tbr/
-ENV JAVA_OPTS="-XX:+UseParallelGC"
+ENV JAVA_OPTS="-XX:+UseParallelGC -Dlog4j2.formatMsgNoLookups=true"
 CMD ["catalina.sh", "run"]
 

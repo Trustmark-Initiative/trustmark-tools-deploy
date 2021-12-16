@@ -7,6 +7,6 @@ COPY ./images/banner.png /usr/local/tomcat/webapps/tpat/assets/tmi-header-56eb1c
 COPY ./images/banner.png /usr/local/tomcat/webapps/tpat/assets/tmi-header-6c6f1a43dfc14aaab266274bdaac780b.png
 COPY ./images/favicon.ico /usr/local/tomcat/webapps/ROOT/
 COPY ./images/favicon.ico /usr/local/tomcat/webapps/tpat/
-ENV JAVA_OPTS="-XX:+UseParallelGC"
+ENV JAVA_OPTS="-XX:+UseParallelGC -Dlog4j2.formatMsgNoLookups=true"
 CMD ["catalina.sh", "run"]
 
