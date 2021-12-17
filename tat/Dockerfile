@@ -6,6 +6,6 @@ COPY tat_config.properties /usr/local/tomcat/webapps/tat/WEB-INF/classes
 COPY ./images/banner.png /usr/local/tomcat/webapps/tat/assets/tmi-header-56eb1cb69ffde28907e0a78527bbd88d.png
 COPY ./images/favicon.ico /usr/local/tomcat/webapps/ROOT/
 COPY ./images/favicon.ico /usr/local/tomcat/webapps/tat/
-ENV JAVA_OPTS="-XX:+UseParallelGC"
+ENV JAVA_OPTS="-XX:+UseParallelGC -Dlog4j2.formatMsgNoLookups=true"
 CMD ["catalina.sh", "run"]
 
