@@ -146,7 +146,7 @@ services:
     ports:
     - "3656:3306"
     healthcheck:
-      test: "/usr/bin/mysql --user=admin \"--password=admin11!\" --execute \"SHOW DATABASES;\""
+      test: "/usr/bin/mysql --user=trpt_user --password=trpt_pw_11 --execute \"SHOW DATABASES;\""
       interval: 5s
       timeout: 2s
       retries: 5
