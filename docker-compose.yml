@@ -40,8 +40,8 @@ services:
         max-file: "3"
       driver: "json-file"
     volumes: 
-      - /Users/jk90/Documents/src/opt/trustmarks/tat/files:/opt/tat/files
-      - /Users/jk90/Documents/src/opt/trustmarks/tat/files:/opt/tat/lucene
+      - /opt/trustmarks/tat/files:/opt/tat/files
+      - /opt/trustmarks/tat/files:/opt/tat/lucene
 
   tbr:
     build:
@@ -110,7 +110,7 @@ services:
     ports:
       - "3456:3306"
     volumes:
-      - /Users/jk90/Documents/src/opt/trustmarks/tat/db:/var/lib/mysql
+      - /opt/trustmarks/tat/db:/var/lib/mysql
     healthcheck:
       test: "/usr/bin/mysql --user=tat_user \"--password=tat_pw_11\" --execute \"SHOW DATABASES;\""
       interval: 5s
