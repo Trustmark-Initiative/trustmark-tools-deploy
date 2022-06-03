@@ -1,4 +1,4 @@
-FROM tomcat:9.0.43-jdk11
+FROM tomcat:9.0.63-jdk11
 COPY tomcat-config.xml /usr/local/tomcat/conf/server.xml
 ADD https://trustmarkinitiative.org/software/tat-1.3.1.war /tmp/tat.war
 RUN unzip -d /usr/local/tomcat/webapps/tat /tmp/tat.war
