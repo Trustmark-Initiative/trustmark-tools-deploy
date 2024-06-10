@@ -1,7 +1,7 @@
-FROM tomcat:9.0.73-jdk11
+FROM tomcat:9.0.89-jdk17
 RUN apt-get update && apt-get upgrade -y && apt-get install -y unzip
 COPY tomcat-config.xml /usr/local/tomcat/conf/server.xml
-ADD https://trustmarkinitiative.org/software/trpt-2.0.war /tmp/trpt.war
+ADD https://trustmarkinitiative.org/software/trpt-2.0.2.war /tmp/trpt.war
 RUN unzip -d /usr/local/tomcat/webapps/trpt /tmp/trpt.war
 COPY trpt.properties        /usr/local/tomcat/webapps/trpt/WEB-INF/classes
 COPY application.properties /usr/local/tomcat/webapps/trpt/WEB-INF/classes

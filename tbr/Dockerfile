@@ -1,7 +1,7 @@
-FROM tomcat:9.0.73-jdk11
+FROM tomcat:9.0.89-jdk17
 RUN apt-get update && apt-get upgrade -y && apt-get install -y unzip
 COPY tomcat-config.xml /usr/local/tomcat/conf/server.xml
-ADD https://trustmarkinitiative.org/software/tbr-2.0.war /tmp/tbr.war
+ADD https://trustmarkinitiative.org/software/tbr-2.0.2.war /tmp/tbr.war
 RUN unzip -d /usr/local/tomcat/webapps/tbr /tmp/tbr.war
 COPY tbr_config.properties  /usr/local/tomcat/webapps/tbr/WEB-INF/classes
 COPY application.properties /usr/local/tomcat/webapps/tbr/WEB-INF/classes
