@@ -1,7 +1,7 @@
-FROM tomcat:9.0.73-jdk11
+FROM tomcat:9.0.89-jdk17
 RUN apt-get update && apt-get upgrade -y && apt-get install -y unzip
 COPY tomcat-config.xml /usr/local/tomcat/conf/server.xml
-ADD https://trustmarkinitiative.org/software/tpat-2.0.war /tmp/tpat.war
+ADD https://trustmarkinitiative.org/software/tpat-2.0.2.war /tmp/tpat.war
 RUN unzip -d /usr/local/tomcat/webapps/tpat /tmp/tpat.war
 COPY tpat_config.properties /usr/local/tomcat/webapps/tpat/WEB-INF/classes
 COPY application.properties /usr/local/tomcat/webapps/tpat/WEB-INF/classes
